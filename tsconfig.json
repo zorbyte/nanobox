@@ -1,0 +1,38 @@
+{
+    "compilerOptions": {
+        "alwaysStrict": true,
+        "declaration": false,
+        "allowSyntheticDefaultImports": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": [
+            "esnext"
+        ],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noEmitOnError": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": false,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "outDir": "./dist",
+        "pretty": true,
+        "removeComments": true,
+        "resolveJsonModule": true,
+        "sourceMap": true,
+        "strict": true,
+        "strictBindCallApply": true,
+        "strictNullChecks": false,
+        "target": "esnext",
+        "types": [
+            "node"
+        ]
+    },
+    "exclude": [
+        "node_modules",
+    ],
+    "include": [
+        "_src/**/*",
+    ]
+}
