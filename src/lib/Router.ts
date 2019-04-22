@@ -1,20 +1,22 @@
+// External modules.
+import { satisfies } from "semver";
+import { IncomingMessage, ServerResponse } from "http";
+
 // Local modules.
 import { Holder } from "./internals/";
 import { NanoRequest, NanoResponse } from "./structures";
 
-import { satisfies } from "semver";
-import { IncomingMessage, ServerResponse } from "http";
-
 class Router {
+    // The holder to use.
     private holder: Holder;
+
+    // Whether or not the Node.JS version supports the HTTP Server opts object.
     protected supportsHttpOpts!: boolean;
 
+    // HTTP methods.
     public get() { }
     public post() { }
     public head() { }
-    public ["m-search"]() {}
-
-    public [get|put|post|patch|delete|del]() {}
 
     constructor() {
         this.supportsHttpOpts = satisfies(process.version, ">=9.6.0 | =8.12.0");

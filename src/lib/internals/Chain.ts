@@ -1,4 +1,4 @@
-// Node modules.
+// External modules.
 import finalHandler from "finalhandler";
 import reusify from "reusify";
 import { Url } from "url";
@@ -67,7 +67,7 @@ class Chain {
                     if ((this.url.pathname === "*" && l.path === "*") || (this.url.pathname === "/" && l.path === "/")) {
                         l.fastRun = true;
                     } else {
-                        urlData = l.pathRegexp.exec(this.url.pathname);
+                        urlData = l.pathRegExp.exec(this.url.pathname);
                     }
                     return l.fastRun || !!urlData;
                 });

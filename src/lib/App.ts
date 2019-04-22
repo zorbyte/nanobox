@@ -1,5 +1,7 @@
-import Router from "./Router";
+// External modules.
 import { Server } from "http";
+
+import Router from "./Router";
 import { NanoRequest, NanoResponse } from "./structures/";
 
 class App extends Router {

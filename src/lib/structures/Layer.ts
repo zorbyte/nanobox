@@ -1,10 +1,18 @@
-import { TLayerFunc, TNextFunc } from "../internals/Chain";
+// External modules.
 import pathToRegexp from "path-to-regexp";
+
+// Local modules.
+import { TLayerFunc, TNextFunc } from "../internals/Chain";
 import { NanoRequest, NanoResponse } from ".";
 
 class Layer {
+    // Used to dictate if the Layer should be immediately run.
     public fastRun: boolean = false;
-    public pathRegexp: RegExp;
+
+    // The path as a RexExp
+    public pathRegExp: RegExp;
+
+    // The path as a string.
     public cleanPath: string;
 
     // Keys of the url.
@@ -17,7 +25,7 @@ class Layer {
         } else {
             this.cleanPath = this.path;
         }
-        this.pathRegexp = pathToRegexp(this.cleanPath, this.keys, {
+        this.pathRegExp = pathToRegexp(this.cleanPath, this.keys, {
             end: false,
             strict: false,
         });

@@ -1,8 +1,8 @@
-// Module imports.
+// External modules.
 import reusify from "reusify";
 import parseUrl from "parseurl";
 
-// Local imports.
+// Local modules.
 import Chain from "./Chain";
 import { NanoRequest, NanoResponse } from "../structures";
 
