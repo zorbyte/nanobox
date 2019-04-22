@@ -1,22 +1,22 @@
-import { EventEmitter } from "events";
 import Router from "./Router";
 import { Server } from "http";
-import NanoRequest from "./structures/Request";
-
-type TListenReturn<T> = T extends undefined ? void : PromiseLike<void>;
+import { NanoRequest, NanoResponse } from "./structures/";
 
 class App extends Router {
-    private emitter: EventEmitter;
     public server: Server;
 
     constructor() {
         super();
-        this.server = new Server({
+        let httpOpts: any[] = [this.run];
+        if (this.supportsHttpOpts) httpOpts.unshift({
             IncomingMessage: NanoRequest,
-        }, this.run);
+            ServerResponse: NanoResponse,
+        });
+        this.server = new Server(...httpOpts);
     }
 
-    listen(port?: number, hostname?: string, backlog?: number, listeningListener?: (err?: Error) => void): TListenReturn<typeof listeningListener> {
+    public listen(port?: number, hostname?: string, backlog?: number, listeningListener?: (err?: Error) => void): Promise<void> | void {
+        // If a callback is supplied then it will use callback syntax, otherwise Promises are used. 
         let resolveFunc = !!listeningListener ? listeningListener : Promise.resolve;
         let rejectFunc = !!listeningListener ? listeningListener : Promise.reject;
 
@@ -26,8 +26,6 @@ class App extends Router {
             this.server.removeListener("error", rejectFunc);
             resolveFunc();
         });
-
-        return;
     }
 }
 

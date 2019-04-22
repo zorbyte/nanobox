@@ -1,5 +1,6 @@
-import { TLayerFunc } from "../internals/Holder";
+import { TLayerFunc, TNextFunc } from "../internals/Chain";
 import pathToRegexp from "path-to-regexp";
+import { NanoRequest, NanoResponse } from ".";
 
 class Layer {
     public fastRun: boolean = false;
@@ -7,7 +8,7 @@ class Layer {
     public cleanPath: string;
 
     // Keys of the url.
-    private keys = [];
+    private keys: any[] = [];
 
     constructor(public path = "/", public fn?: TLayerFunc | TLayerFunc[], public isRoute = false) {
         let regexMatch = /[?#]/g.exec(path);
@@ -22,8 +23,9 @@ class Layer {
         });
     }
 
-    run(req, res, next) {
-        req.method
+    public run(req: NanoRequest, res: NanoResponse, next: TNextFunc) {
+        // Here to resolve TSC errors.
+        console.log(req, res, next);
     }
 }
 
