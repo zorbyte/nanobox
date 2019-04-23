@@ -1,7 +1,7 @@
 // Local modules.
 import App from "./lib/App";
 import Router from "./lib/Router";
-import { NanoResponse, NanoRequest } from "./lib/structures/";
+import { NanoResponse, NanoRequest } from "./lib/structures";
 
 // Nanobox App, exporting utils and types because I'm lazy.
 export = class Nanobox extends App {

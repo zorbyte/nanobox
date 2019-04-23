@@ -1,11 +1,13 @@
-import { ServerResponse } from "http";
-//import { Socket } from "net";
-import NanoRequest from "./Request";
+// External modules.
+import { IncomingMessage, ServerResponse } from "http";
+
+// Local modules.
+import { NanoRequest } from ".";
 
 class NanoResponse extends ServerResponse {
     public body?: any;
 
-    constructor(req: NanoRequest) {
+    constructor(req: NanoRequest | IncomingMessage) {
         super(req);
     }
 };

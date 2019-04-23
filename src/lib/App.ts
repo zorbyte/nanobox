@@ -1,10 +1,12 @@
 // External modules.
 import { Server } from "http";
 
+// Local modules.
 import Router from "./Router";
-import { NanoRequest, NanoResponse } from "./structures/";
+import { NanoRequest, NanoResponse } from "./structures";
 
 class App extends Router {
+    // The express server.
     public server: Server;
 
     constructor() {
@@ -22,7 +24,10 @@ class App extends Router {
         let resolveFunc = !!listeningListener ? listeningListener : Promise.resolve;
         let rejectFunc = !!listeningListener ? listeningListener : Promise.reject;
 
+        // Listen for incomming connections.
         this.server.listen(port, hostname, backlog);
+
+        // Listen for the appropriate events.
         this.server.once("error", rejectFunc);
         this.server.once("listening", () => {
             this.server.removeListener("error", rejectFunc);

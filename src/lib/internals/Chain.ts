@@ -107,6 +107,8 @@ class Chain {
                     // Run the layer.
                     currentLayer.run(this.req, this.res, this.done);
 
+                    if (this.index < this.totalLayers) this.done();
+
                     // This is never reached unless the entire chain is completed.
                     return this.releasePool();
                 }
